@@ -1,14 +1,9 @@
 \section{Problem Overview}
 
-Any end-to-end robotic system consist of modules which are designed for specific
-ability such as grasping, path planning, language understanding etc. These
-modelus are attached in cascade to achieve a specific task end-to-end. In this
-work we address the question of learning such end-to-end systems in an
-interactive manner with a human-in-the-loop. We further want the interactive
-learning procedure to be easy for any non-expert user to use. Our motivation
-being that a non-expert use is typically agnostic to the modules involved in any
-end-to-end robotic system, hence such users cannot mannually tune each module to
-achieve the deriersed final behaviour.    
+End-to-end robotic system consist of cascade of modules which are designed to enable specific robotic abilities such as grasping, path planning, language understanding etc. In this
+work we address the problem of learning such end-to-end systems in an interactive manner with a human-in-the-loop. We further want the interactive learning procedure to be easy for any non-expert user to use. Such non-expert users are typically agnostic to the modules involved in the end-to-end robotic system and therefore cannot manually tune individual module. In fact they can at best judge the final behaviour produced by the robot. In this work we propose an interactive procedure for learning end-to-end robotic systems by simply observing user preferences on the final output.
+
+In our formulation we consider cascade of modules that accomplish a robotic task, where the output of a module forms the input to the module following it. The input into the cascade is a robotic task and the output from the last module is the robot behaviour e.g. a trajectory accomplishing the task. We then elicit a feedback from the user on the robot behaviour and 
 
 \section{System Overview}
 
