@@ -1,1 +1,10 @@
 \section{Problem Formulation}
+In this section we formally describe the learning procedure. We consider modules $M_1,M_2,...,M_N$ connected in a cascade such that the output of $M_{i-1}$ forms the input to $M_i$. Input into  module $M_i$ is denoted by $x_i$ and its output by $y_i$. Each module further defines a function $f_i(x_i,y_i;\theta_i)$ jointly over its input $x_i$ and output $y_i$, and parametrized by $\theta_i$. The input into the cascade is a robotic task $x_1$ and the output robot behaviour presented to the user is $y_N$. 
+We further assume a function $U(x_1,y_N)$ which conveys how much the user values output $y_N$ for input $x_1$. However, the function $U(x_1,y_N)$ is not observed and the algorithm only gets to see user feedback. Our learning setting proceeds iteratively as follows:
+\begin{enumerate}
+\item At each iteration $T$, the robot is presented with a task $x_1$ and it generates behaviour $y_{N,T}$ which is presented to the user.
+\item The user provides a feedback $\bar{y}_{N,T}$ such that $U(x_1,\bar{y}_{N,T}) > U(x_1,{y}_{N,T})$.
+\item The parameters $\{\theta_1,...,\theta_N\}$ of the entire cascade are updated.
+\end{enumerate} 
+
+The learning setting described above generalizes coactive learning~\citep{Jain13,Shivaswamy12} to a system with multiple modules. We differ from previous works on coactive learning in that we backpropagate gradients to update each module. Upon receiving the user feedback, parameters of modules are improved using the following perceptron equations:   
