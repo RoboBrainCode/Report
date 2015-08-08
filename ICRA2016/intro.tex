@@ -1,14 +1,27 @@
+% !TEX root = main.tex
 \section{INTRODUCTION}
 
-In a joint end-to-end system many robotic tasks fail.  \\
+Building a reliable end-to-end robot system consisting of several modules is a challenging task.
+A robot system, such as a robot that can make coffee [Jae], fold towel [], consists of several
+modules such as for object recognition, path planning, language understanding, manipulation. These modules
+are generally developed individually and there performance may not be optimal for the entire pipeline or they may fail due to incompatibility reasons which are hard to predict beforehand.
 
-Real-life systems fail, failure is expensive. Obtaining expert feedback is
-tough.
-Therefore crowd-sourced approaches are useful. Detailed feedback is difficult to
-give. With weak like-dislike feedback notable improvements can be shown in the
-end-to-end system.  \\
+Failure in a robot system are expensive and can be threatening to humans and surrounding. Previous works such as \cite{abeel helicopter} have used expert feedback to recover from these failures. However, obtaining expert feedback is expensive and not always possible. In this paper, we take a co-active feedback approach for an end-to-end robot system consisting of several robot modules. 
 
-With our algorithm, we can get significant improvement in end to end system. \\
+In a co-active setting, the user marginally improves the output of the system which is then used by the system for updating itself. The advantage of this approach is that user does not have to provide the optimal output, which is often not clear, and the feedback can generally be provided by non-expert users.
+Previous works using this approach, have looked at robot system with single modules such as [planit, etc.] 
+In this work, we expand this line of research to robot system with multiple modules by showing how to propagate the co-active feedback given to the last modules to the previous modules.
+%In a joint end-to-end system many robotic tasks fail.  \\
 
-Our experiments show that we can converge to expert feedback system and we fixed
-this particular aspect of the system.
+%Real-life systems fail, failure is expensive. Obtaining expert feedback is tough.
+%Therefore crowd-sourced approaches are useful. Detailed feedback is difficult to
+%give. With weak like-dislike feedback notable improvements can be shown in the
+%end-to-end system.  \\
+
+In this paper, our main contribution are two folds: we first provide a general mechanism
+for using co-active feedback for robot systems with several modules, we next provide a proof of concept
+by using our algorithm to improve a robot system for mapping natural language descriptions to navigation  trajectories. Our experiments also show that the final improved robot system, performs close to the robot system with each module trained individually using expert feedback.
+%With our algorithm, we can get significant improvement in end to end system. \\
+
+%Our experiments show that we can converge to expert feedback system and we fixed
+%this particular aspect of the system.
