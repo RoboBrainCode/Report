@@ -7,4 +7,13 @@ We further assume a function $U(x_1,y_N)$ which conveys how much the user values
 \item The parameters $\{\theta_1,...,\theta_N\}$ of the entire cascade are updated.
 \end{enumerate} 
 
-The learning setting described above generalizes coactive learning~\citep{Jain13,Shivaswamy12} to a system with multiple modules. We differ from previous works on coactive learning in that we backpropagate gradients to update each module. Upon receiving the user feedback, parameters of modules are improved using the following perceptron equations:   
+The learning setting described above generalizes coactive learning~\citep{Jain13,Shivaswamy12} to a system with multiple modules. We differ from previous works on coactive learning in that we backpropagate gradients to update each module. Upon receiving the user feedback, parameters of modules are updated using the following perceptron equations:  
+\begin{align}
+\theta_N \leftarrow \theta_N +  &\frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_N} - \frac{\partial f_N(x_N,{y}_N)}{\partial \theta_N}\\
+ &\vdots\\
+\theta_i \leftarrow \theta_i +  &\frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_i} - \frac{\partial f_N(x_N,{y}_N)}{\partial \theta_i}
+\end{align}
+In the above equations the	 gradient $\frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_i}$ is calculated using backpropagation as follows:
+\begin{equation}
+\frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_i} = \frac{\partial y_i}{\partial \theta_i} \frac{\partial x_{i+1}}{\partial y_i} \frac{\partial f_N(x_N,\bar{y}_N)	}{\partial x_{i+1}}
+\end{equation}   
