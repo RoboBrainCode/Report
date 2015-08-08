@@ -14,6 +14,8 @@ The learning setting described above generalizes coactive learning~\citep{Jain13
 \theta_i \leftarrow \theta_i +  &\frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_i} - \frac{\partial f_N(x_N,{y}_N)}{\partial \theta_i}
 \end{align}
 In the above equations the	 gradient $\frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_i}$ is calculated using backpropagation as follows:
-\begin{equation}
-\frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_i} = \frac{\partial y_i}{\partial \theta_i} \frac{\partial x_{i+1}}{\partial y_i} \frac{\partial f_N(x_N,\bar{y}_N)	}{\partial x_{i+1}}
-\end{equation}   
+\begin{align}
+\frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_i} &= \frac{\partial y_i}{\partial \theta_i} \frac{\partial x_{i+1}}{\partial y_i} \frac{\partial f_N(x_N,\bar{y}_N)	}{\partial x_{i+1}}\\
+\frac{\partial f_N(x_N,\bar{y}_N)	}{\partial x_{i+1}} &= \frac{\partial y_{i+1}	}{\partial x_{i+1}} \frac{\partial f_N(x_N,\bar{y}_N)	}{\partial x_{i+2}}
+\end{align}   
+Typically in cascade $y_i = x_{i+1}$, i.e. output of a module $M_i$ becomes input to the module $M_{i+1}$. This simplifies $\frac{\partial x_{i+1}}{\partial y_i} = 1$.
