@@ -6,11 +6,12 @@ A robot system, such as a robot that can make coffee [Jae], fold towel [], consi
 modules such as for object recognition, path planning, language understanding, manipulation. These modules
 are generally developed individually and there performance may not be optimal for the entire pipeline or they may fail due to incompatibility reasons which are hard to predict beforehand.
 
-Failure in a robot system are expensive and can be threatening to humans and surrounding. Previous works such as \cite{abeel helicopter} have used expert feedback to recover from these failures. However, obtaining expert feedback is expensive and not always possible. In this paper, we take a co-active feedback approach for an end-to-end robot system consisting of several robot modules. 
+Previous works such as \cite{abeel helicopter} have used expert feedback to recover from these failures. However, obtaining expert feedback is expensive and not always possible. In this paper, we take a co-active learning[cite] approach for an end-to-end robot system consisting of several robot modules. 
 
-In a co-active setting, the user marginally improves the output of the system which is then used by the system for updating itself. The advantage of this approach is that user does not have to provide the optimal output, which is often not clear, and the feedback can generally be provided by non-expert users.
+In a co-active learning setting, the user marginally improves the output of the system which is then used by the system for updating itself. This approach offers the advantage that user does not necessarily have to provide the optimal output. This allows the setting to work in cases where optimal output is not clear or is expensive. 
+
 Previous works using this approach, have looked at robot system with single modules such as [planit, etc.] 
-In this work, we expand this line of research to robot system with multiple modules by showing how to propagate the co-active feedback given to the last modules to the previous modules.
+In this work, we expand this line of research to robot systems with multiple modules by showing how to propagate the co-active feedback given to the last modules to the previous modules.
 %In a joint end-to-end system many robotic tasks fail.  \\
 
 %Real-life systems fail, failure is expensive. Obtaining expert feedback is tough.
@@ -18,9 +19,9 @@ In this work, we expand this line of research to robot system with multiple modu
 %give. With weak like-dislike feedback notable improvements can be shown in the
 %end-to-end system.  \\
 
-In this paper, our main contribution are two folds: we first provide a general mechanism
-for using co-active feedback for robot systems with several modules, we next provide a proof of concept
-by using our algorithm to improve a robot system for mapping natural language descriptions to navigation  trajectories. Our experiments also show that the final improved robot system, performs close to the robot system with each module trained individually using expert feedback.
+In this paper, our main contributions are two fold: we first provide a general mechanism
+for using co-active feedback for complex robot systems. Secondly, we provide an empirical validation of 
+our algorithm by improving a robot system for mapping natural language descriptions to navigation  trajectories. Our experiments also show that the final improved robot system, performs close to the robot system with each module trained individually using expert feedback.
 %With our algorithm, we can get significant improvement in end to end system. \\
 
 %Our experiments show that we can converge to expert feedback system and we fixed

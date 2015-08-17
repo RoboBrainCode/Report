@@ -1,6 +1,17 @@
+% !TEX root = main.tex
 \section{Related Work}
+In this paper, we present a novel co-active learning setting for complex robot systems with application to the problem of mapping natural language descriptions to robot trajectories. This brings together three themes--- co-active learning, natural language understanding and planning trajectories.
+
+\noindent\textbf{Co-active Learning.}
+
+\noindent\textbf{Natural Language Understanding.} \todo{maybe add a landing line} Past decade has seen significant research in the problem natural language understanding. [tellex, mataric, zettlemoyer, misra, mooney, mohit bansal, berzilay] have looked at the problem of mapping natural language commands to robot actions. These works, however are chiefly concerned with parsing the commands and do not jointly model scene understanding or trajectory planing. The domain considered is either a virtual world [zettlemoyer, mooney, bansal, berzilay] or the scene understanding and planing are performed separately from the natural language understanding, in a sequential fashion [misra, tellex]. Sequential modeling means that the entire pipeline may not be optimally tuned for the end to end task. Therefore, the task of tuning the entire pipeline using weak feedback only on the final output is a relevant problem.
+
+\noindent\textbf{Trajectory Planning.}
+
+\iffalse
 The TellMeDave system translates natural language sentences to actions
 sequences. PlanIt systems evaluates planning trajectories based on human
 context. We have combined the systems resulting in an end-to-end system which
 uses RoboBrain for features running on Weaver. 
+\fi
 
