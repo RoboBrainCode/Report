@@ -8,6 +8,18 @@ We filtered out 2 datapoints containing instructions which were very high level 
 
 Please see supplementary for examples from our dataset.
 
+\subsection{Set Up:}
+	\subsubsection{Planit with Coactive Feedback:} 
+		Training Set : 7 different environments with different activities occuring in them. User was shown trajectories for going from one point to another and the user can stop trajectories and update specific waypoints of the trajectory by dragging the waypoint to a better point. Total 432 feedback was collected from the user. For evaluation, considered a set of 10 environments, 7 existing+3 new. The parameters were used to rank 112 trajectory sets each containing 7 trajectories. Original version of planit ( as reported in the planit paper (expert system) was assumed as the ground truth. \textbf{The nDCG for the above system was 0.782727868206}. This is reasonable since in the earlier version the feedback was expert (labelling segments of 2500 different trajectories) and in the given system we have just 400 feedback.\ref{fig:planitResult} 
+		% \includegraphics[scale=0.5]{planitResult}
+		\begin{figure}[h]
+		\includegraphics[width=5cm]{planitResult}
+		\centering
+		\caption{Cost function learnt via Coactive Feedback}
+  		\label{fig:planitResult}
+		\end{figure}
+
+
 \subsection{Results} \todo{Dip: please take a detailed pass over this subsection}
 We test our algorithm on two tasks, in the first task we evaluate the success of co-active feedback in tuning the robot system and in second task, we evaluate the results from different type of feedback.
 
