@@ -1,0 +1,18 @@
+% !TEX root = main.tex
+\section{Related Work}
+In this paper, we present a novel co-active learning setting for complex robot systems with application to the problem of mapping natural language descriptions to robot trajectories. This brings together three themes--- co-active learning, natural language understanding and planning trajectories.
+
+\noindent\textbf{Co-active Learning.}
+Coactive learning is a model that captures the interaction between the complex learning syatem and end user. It provides and effective way to train a efficient learning model in a given scenario. In the coactive setting, user observes the end system output for a given input and updates the output slighly(not necessarily optimal) thus improving the entire system. Coactive learning have proved to extremely useful in cases where the optimal feedback in non intutive or is difficult to obtain. Coactive learning have been used to learn user preferences for trajectory planning, learning page ranks for webpages, movie recommendations, etc. In the current work, we capture user feedback over the output trajectory for a given natural language description and improve different system modules using a single feedback. 
+
+\noindent\textbf{Natural Language Understanding.} Past decade has seen significant research in the problem natural language understanding. \cite{tellex2011understanding,fasola2013using,misra2014tell,chen2010training,artzi2013weakly,matuszek2012grounded, Mei2015Navigational,branavan2012learning} have looked at the problem of mapping natural language commands to robot actions. These works, however are chiefly concerned with parsing the commands and do not jointly model scene understanding or trajectory planing. The domain considered is either a virtual world \cite{chen2010training,artzi2013weakly,matuszek2012grounded, Mei2015Navigational,branavan2012learning} or the scene understanding and planing are performed in a sequential pipeline with the natural language understanding \cite{tellex2011understanding,misra2014tell}. Sequential modeling means that the entire pipeline may not be optimally tuned for the end to end task and thus may or may not produce reasonable output. 
+
+\noindent\textbf{Trajectory Planning.}Significant work have been done in the field trajectory planning in unknown environments in the presence of 3-D obstacles. Most methods are based on sampling and draw random points from the environment and mark them as safe or unsafe. However, multiple trajectories may be possible for moving from one point to another out of which some may be desirable to the end user. Naive trajectory planning does not incorporate this while planning trajectories. \cite{planit,nipscoactiveplanning} have focussed on the task of planning trajectories according to the user preferences. However, such models are trained individually using expensive expert feedback on a large number of examples and are difficult to integrate with other robotics module.
+
+\vspace{3.6em}
+\iffalse
+The TellMeDave system translates natural language sentences to actions
+sequences. PlanIt systems evaluates planning trajectories based on human
+context. We have combined the systems resulting in an end-to-end system which
+uses RoboBrain for features running on Weaver. 
+\fi

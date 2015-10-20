@@ -1,0 +1,24 @@
+% !TEX root = main.tex
+\section{Problem Formulation}
+In this section we formally describe the learning procedure. We consider modules $M_1,M_2,...,M_N$ connected to form a cascade. Input into  module $M_i$ is denoted by $x_i$ and its output by $y_i$.  Modules are connected such that the output of $M_{i-1}$ forms the input into $M_i$, i.e. $y_{i-1} = x_i$. Each module further defines a function $f_i(x_i,y_i;\theta_i)$ jointly over its input $x_i$ and output $y_i$, and parametrized by $\theta_i$. The input into the cascade is task $x_1$, and the output robot behaviour presented to the user is $y_N$. 	We further assume a function $U(x_1,y_N)$ which conveys how much the user values output $y_N$ for input $x_1$. The function $U(x_1,y_N)$ is not observed and the algorithm only gets to observe user feedback on $y_N$. Our learning setting iteratively performs the following steps:
+\begin{enumerate}
+\item At each iteration $t$, the robot is presented with a task $x_1$ and it generates behaviour $y_{N,t}$ which is presented to the user.
+\item The user provides a feedback $\bar{y}_{N,t}$ by improving upon ${y}_{N,t}$ such that $U(x_1,\bar{y}_{N,t}) > U(x_1,{y}_{N,t})$.
+\item The parameters $\{\theta_1,...,\theta_N\}$ of the entire cascade are updated.
+\end{enumerate} 
+
+The learning setting described above generalizes coactive learning~\citep{Jain13,Shivaswamy12} to a system with multiple modules. We differ from previous works on coactive learning in that we use  backpropagation in order to update parameters for each module \todo{earlier we claim that we are the first one to do coactive on multiple modules so which work do we differ from -Dip}. Upon receiving the user feedback, parameters of module $M_i$ are updated using the following perceptron equation:  
+\begin{align}
+\theta_i \leftarrow \theta_i +  \frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_i} &- \frac{\partial f_N(x_N,{y}_N)}{\partial \theta_i}
+\end{align}
+In the above equations the	 gradient $\frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_i}$ is calculated using backpropagation as follows:
+\begin{align}
+\frac{\partial f_N(x_N,\bar{y}_N)}{\partial \theta_i} &= \frac{\partial y_i}{\partial \theta_i}  \frac{\partial f_N(x_N,\bar{y}_N)	}{\partial y_{i}}\\
+\frac{\partial f_N(x_N,\bar{y}_N)	}{\partial y_{i}} &= \frac{\partial y_{i+1}	}{\partial y_{i}} \frac{\partial f_N(x_N,\bar{y}_N)	}{\partial y_{i+1}}
+\end{align}
+By backpropagating error through the cascade we  incorporate the corrective user feedback to update each module in the cascade. The progress made by the learning algorithm is measured by its regret which is given by the following equation:%~\eqref{eq:regret} which cannot be directly observed.
+\begin{equation}
+\label{eq:regret}
+REG_T = \frac{1}{T}\sum_{t=1}^T U(x_{1,t},y_{N,t}^*) - U(x_{1,t},y_{N,t}) 
+\end{equation}
+Here $y_{N,t}^*$ is the optimal robot behaviour for $x_{1,t}$, and $y_{N,t}$ is the behaviour predicted by the algorithm at iteration $t$. The regret cannot be directly observed as $y_{N,t}^*$ is not observable. However, if the user at each iteration incrementally improves upon $y_N$ (i.e., $U(x_1,\bar{y}_{N,t}) > U(x_1,{y}_{N,t})$) then the regret asymptotically decays to zero under mild constraints~\citep{Shivaswamy12,Jain13}.  

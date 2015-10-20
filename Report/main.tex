@@ -1,0 +1,90 @@
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+%\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+\usepackage{times}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{bm}
+\newtheorem{example}{\hspace*{-1em}\textbf{Example}}
+
+% numbers option provides compact numerical references in the text.
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%\usepackage[]{algorithm2e}
+\makeatletter
+\let\NAT@parse\undefined
+\makeatother
+
+\usepackage[numbers]{natbib}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[it,small]{caption}
+\usepackage{subcaption}
+\usepackage{dsfont}
+\newcommand{\argmax}{\operatorname{arg\,max}}
+\newcommand{\argmin}{\operatorname{arg\,min}}
+\newcommand{\ve}[1]{\mathbf{#1}}
+
+
+\input{space_saver}
+\newcommand{\todo}[1]{\textcolor{blue}{\textbf{#1}}}
+
+\graphicspath{ {images/} }
+
+\pdfinfo{
+   /Author (Ashesh Jain)
+}
+
+
+\begin{document}
+
+% paper title
+%\title{Learning Temporal Driving Models \\ for Anticipating Maneuvers }
+\title{Planit dave}
+ %\title{%Learning Contextual Temporal Models for Anticipating Driving Maneuvers \\ \\
+%Learning Contextual Temporal Models of \\ Driving for Anticipating  Maneuvers \\ \\
+%Learning Temporal Driving Models with Multi-modal Context for Anticipating Maneuvers \\
+% Learning Contextual Temporal Models of \\ Driving for Anticipating  Maneuvers}
+
+% You will get a Paper-ID when submitting a pdf file to the conference system
+\author{Authors\\
+Cornell University and Stanford University\\}
+
+
+\maketitle
+\maketitle
+
+\IEEEpeerreviewmaketitle
+
+
+\input{abstract}
+
+
+\input{intro}
+
+\input{relatedwork}
+
+\input{overview}
+
+\input{model}
+
+\input{experiment}
+
+\input{conclusion}
+
+{
+\bibliographystyle{plainnat}
+\bibliography{../COMTools/shortstrings,../COMTools/references}
+}
+
+\end{document}
