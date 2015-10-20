@@ -1,18 +1,18 @@
 \section{Discussion}
-here goes discussion on the results.
-Discussion done in 3 paragraphs.
-Paragraph1:
-analysis of the current results and why the joint system results differ from the independent system with joint feedback
+Providing sub optimal feedback on language instruction is as difficult for an end user as the optimal feedback. In the tellmedave setup with coactive feedback, such a sub optimal feedback is required which is difficult to obtain. However, in the case of the joint system, user provides feedback on the end trajectorywhich is very flexible and serves as a feedback to improve language as well as planning modules. Performance of the joint system is comparable to the individual trained systems and can be improved further. Major reasons for deviation of the result from the individual systems is owing to the lesser number of feedbacks obtained for individual systems and the error that propagate due mapping of the feedback to individual systems. Errors may also propagate due to generation of incorrect language instruction sequence correspond to a given trajectory provided as feedback to the language module.
 
-Paragraph2:
-what can be done to improve the current system, improve baseline
-improve heuristic function
-improve the topk space
+The joint system can be improved by considering more number of data points which can generate more number of feedback for the independent systems. Better methods can be devised for distributing end user feedback to individual systems. Language feedback can be improved by sampling more number of language instructions from the language space and designing better metrics to measure relevance of the language instruction for a given trajectory.
 
-Paragraph3:
-what else can be done:
-devising a function end system utility function.
-An idea linear combination of the entire system and then learn the weights using coactive feedback
-learn independent modules using back propagation
-increasing number of modules in the pipeline include vision and manipulation as well
+One limitation of the current system is that it can only capture or map feedback correspond to the move instructions though the sequence of steps performed by the robot is a blend of both move and manipulation instructions. Our model fails to distinguish between two instruction sequence output with the same set of move instructions and different set of manipulation instructions. This affects the nature of feedback provided to the language module.
+
+Another major drawback of the current system is that it does not interlink different modules. Feedback is distributed between different modules but not back propagated. To improve the learning for the joint system, there is a need to devise a utility function that measures the combined performance of the entire pipeline.($U(x_{1},y_{N})$). Such a utility function can be a representative of how accurately if a given language instruction executed and how efficiently does it capture the user preferences. Such a utility function can be used to back propagate the end user feedback among different modules and can be used learn the entire system effectively.
+
+Moreover, currently we start with a baseline for 10\% for the language module and improve to around 30\%. The baseline is weak and the improvement is thus not a true representative of the capability of the model to effectively learn the parameters. Starting with a baseline of around 20\%-25\% and improving beyond that will provide a better idea of the performance of the entire system.
+
+
+% what else can be done:
+% devising a function end system utility function.
+% An idea linear combination of the entire system and then learn the weights using coactive feedback
+% learn independent modules using back propagation
+% increasing number of modules in the pipeline include vision and manipulation as well
 
