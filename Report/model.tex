@@ -25,7 +25,6 @@ REG_T = \frac{1}{T}\sum_{t=1}^T U(x_{1,t},y_{N,t}^*) - U(x_{1,t},y_{N,t})
 Here $y_{N,t}^*$ is the optimal robot behaviour for $x_{1,t}$, and $y_{N,t}$ is the behaviour predicted by the algorithm at iteration $t$. The regret cannot be directly observed as $y_{N,t}^*$ and utility $U$ are not observable. However, if the user at each iteration incrementally improves upon $y_N$ then the regret asymptotically decays to zero under mild constraints~\citep{Shivaswamy12,Jain13}.
 
 \subsection{Pseudo Code}
-
 \textbf{Input:} Environment Env, NL Sentence N, tellmedaveWeights ($W_{T}$), planitWeights($W_{P}$)
 \newline \newline
 \textit{Step1 (generating user feedback)} \newline \newline
@@ -39,19 +38,15 @@ for intermediateObject in moveActionSeq:
 \item user moves the current point and records the updated point
 \item feedback.add((currentPoint,updatedPoint))
 \end{enumerate}
-\pagebreak
 % \vspace{6em}
 \textit{Step2(updating parameters)} \newline \newline
 option=MapFeedback(feedback) \newline
-if (option == 'planit') \newline
-\{ \newline
-\hphantom {1}for feed in feedback : \newline
-\hphantom {1} \hphantom {1} $\bar{W}_{P}$=updatePlanit(feed,$W_{P}$) \newline
-\} \newline
+if (option == planit) \newline
+\hphantom {1} \hphantom {1} for feed in feedback : \newline
+\hphantom {1} \hphantom {1} \hphantom {1} $\bar{W}_{P}$=updatePlanit(feed,$W_{P}$) \newline
 else \newline
-\{ \newline
-\hphantom {1}feed=mapToTopKOutput(feedback)
-\hphantom {1}$\bar{W}_{T}$=updateTellMeDave(feed,$W_{T}$,Env) \newline
-\} \newline \newline
-\textit{Step3} \newline 
+\hphantom {1} \hphantom {1}feed=mapToTopKOutput(feedback) \newline
+\hphantom {1} \hphantom {1}$\bar{W}_{T}$=updateTellMeDave(feed,$W_{T}$,Env) \newline
+\newline
+\textit{Step3 (returning parameters)} \newline 
 return planitWeights,tellmedaveWeights \newline
