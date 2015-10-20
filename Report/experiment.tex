@@ -39,7 +39,17 @@ We filtered out 2 datapoints containing instructions which were very high level 
 	\subsubsection{Joint system Coactive Feedback:}
 	In the given setting we cascade the modules corresponding to the language and trajectory planing in such a way that the robot executes a sequence of instructions to perform a task specified by the natural language instruction. The dataset consists of 90 language instructions across 16 environments of which 60 were used for training and 30 were used for evaluation.
 
-	User was shown trajectories for executing a sequence of instruction in a simulator and the user can stop trajectories and update specific waypoints of the trajectory by dragging the waypoint to a better point thus modifying the entire trajectory for performing the task.
+	User are shown trajectories for executing a sequence of instruction in a simulator and the user can stop trajectories and update specific waypoints of the trajectory by dragging the waypoint to a better point thus modifying the entire trajectory for performing the task.
+
+	Thus, for a natural language instruction $x$, user observes trajectory $y$ and provides a slighly improved trajectory $\bar{y}$ for executing the instruction. Such feedback may either correspond to modification in the sequence of instructions output by the language module or updating the trajectory as per user preferences. The feedback is such that ($x,\bar{y}$) captures the intent of the user in a better way than ($x,y$).
+
+	We have devised a heuristic that distributes the given feedback to planit and tellmedave and finds sequence of robot instructions that are consistent with the given trajectory.
+
+	The modified trajectories on these 60 datapoints generated around 50 feedback for tellmedave and around 250 feedback for planit.(multiple waypoints can be obtained from a single trajectory improvement for learning planning parameters).
+
+	The performance of planit was evaluated in a similar fashion as the standalone system by ranking 112 trajectory set each consisting of 7 trajectories.The nDCG (normalized discounted cumulative gain) of around \textbf{0.79} was obtained with respect to the ground truth.
+
+
 
 
 \subsection{Results} \todo{Dip: please take a detailed pass over this subsection}
