@@ -10,10 +10,17 @@ We filtered out 2 datapoints containing instructions which were very high level 
 
 \subsection{Set Up:}
 	\subsubsection{Planit with Coactive Feedback:} 
-		Training Set : 7 different environments with different activities occuring in them. User was shown trajectories for going from one point to another and the user can stop trajectories and update specific waypoints of the trajectory by dragging the waypoint to a better point. Total 432 feedback was collected from the user. For evaluation, considered a set of 10 environments, 7 existing+3 new. The parameters were used to rank 112 trajectory sets each containing 7 trajectories. Original version of planit ( as reported in the planit paper (expert system) was assumed as the ground truth. \textbf{The nDCG for the above system was 0.89}. This is reasonable since in the earlier version the feedback was expert (labelling segments of 2500 different trajectories) and in the given system we have just 400 feedback.\ref{fig:planitResult} 
+		Planit is a crowd source platform that captures human interaction with the environment and learn their preferences over trajectories. Earlier version of planit was trained using expectation maximization using a database of 2500 trajectories over 112 different environments. In the current setting, we aim to to learn user preferences via coactive learning which requires a sub optimal feedback from the user which is more flexible to obtain and requires fewer number of training examples.
+
+		Dataset consists of 16 different environments with 5 different activities occuring in them namely watching, walking, reaching, interacting, etc. User can view the environment in a simulator and can drag the robot to different positions in the environment. User provided the feedback in the form of a pair ($y,\bar{y}$) whereby $U(y) < U(\bar{y})$. This implies that the robot position $\bar{y}$ is more favourable for the user than the robot position $y$ in any trajectory in the environment. 
+
+		Total 432 feedback was collected from the user across 10 different environment. For evaluation, we considered a set of 6 environments (not in the training set) from the dataset. The trained model was used to rank 112 trajectory sets each containing 7 trajectories to move between two randomly sampled points $A$ and $B$. Original version of planit (as reported in the planit paper (expert system) was assumed as the ground truth for evaluating the trajectories. The nDCG (normalized discounted cumulative gain) of \textbf{0.89} for the above model was observed. This is reasonable since in the earlier version the feedback was expert (labelling segments of 2500 different trajectories) and in the given system we have 400 instances of much weaker feedback.\ref{fig:planitResult} 
+
+
+		% User was shown trajectories for going from one point to another and the user can stop trajectories and update specific waypoints of the trajectory by dragging the waypoint to a better point. 
 		% \includegraphics[scale=0.5]{planitResult}
 		\begin{figure}[h]
-		\includegraphics[width=5cm]{planitResult}
+		\includegraphics[width=8cm]{planitResult}
 		\centering
 		\caption{Cost function learnt via Coactive Feedback}
   		\label{fig:planitResult}
@@ -21,7 +28,7 @@ We filtered out 2 datapoints containing instructions which were very high level 
 
 
 		\begin{figure}[h]
-		\includegraphics[width=5cm]{coactiveVSfeed}
+		\includegraphics[width=9.5cm]{coactiveVSfeed}
 		\centering
 		\caption{Coactive Learning aginst number of feedbacks}
   		\label{fig:c1}
