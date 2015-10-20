@@ -17,7 +17,7 @@ We filtered out 2 datapoints containing instructions which were very high level 
 		Total 432 feedback was collected from the user across 10 different environment. For evaluation, we considered a set of 6 environments (not in the training set) from the dataset. The trained model was used to rank 112 trajectory sets each containing 7 trajectories to move between two randomly sampled points $A$ and $B$. Original version of planit (as reported in the planit paper (expert system) was assumed as the ground truth for evaluating the trajectories. The nDCG (normalized discounted cumulative gain) of \textbf{0.89} for the above model was observed. This is reasonable since in the earlier version the feedback was expert (labelling segments of 2500 different trajectories) and in the given system we have 400 instances of much weaker feedback.\ref{fig:planitResult} 
 
 
-		% User was shown trajectories for going from one point to another and the user can stop trajectories and update specific waypoints of the trajectory by dragging the waypoint to a better point. 
+		
 		% \includegraphics[scale=0.5]{planitResult}
 		\begin{figure}[h]
 		\includegraphics[width=8cm]{planitResult}
@@ -37,7 +37,9 @@ We filtered out 2 datapoints containing instructions which were very high level 
 		here goes description of tellmedave with coactive feedback
 
 	\subsubsection{Joint system Coactive Feedback:}
-		here goes description of the joint system with coactive feedback
+	In the given setting we cascade the modules corresponding to the language and trajectory planing in such a way that the robot executes a sequence of instructions to perform a task specified by the natural language instruction. The dataset consists of 90 language instructions across 16 environments of which 60 were used for training and 30 were used for evaluation.
+
+	User was shown trajectories for executing a sequence of instruction in a simulator and the user can stop trajectories and update specific waypoints of the trajectory by dragging the waypoint to a better point thus modifying the entire trajectory for performing the task.
 
 
 \subsection{Results} \todo{Dip: please take a detailed pass over this subsection}
