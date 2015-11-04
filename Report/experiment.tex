@@ -1,10 +1,10 @@
 % !TEX root = main.tex
 \section{Experiments}
 \subsection{Dataset}
-Our dataset consists of 90 natural language instrauctions of which 60 are a sequence of simple move to instructions and 30 are high level natural language instructions. All these instructions are taken using a \href{http://52.25.65.189:9000/#/getFeedback}{crowd sourcing system} and the ground truth for the natural language instructions are also collected for evaluating the model. The instructions are taken for 16 different environments depicting scenes similar to living room, bedroom and kitchen. \\
-The environments are constructed in OpenRAVE with context generating from 6 different human activities depicted by skeletals. The activities considered are walking, watching, interacting, reaching, sitting and working. \\
+Our dataset consists of 90 natural language instructions of which 60 are a sequence of simple move to instructions and 30 are high level natural language instructions. All these instructions are taken using a \href{http://52.25.65.189:9000/#/getFeedback}{crowd sourcing system} and the ground truth for the natural language instructions are also collected for evaluating the model. The instructions are taken for 16 different environments depicting scenes similar to living room, bedroom and kitchen. \\
+The environments are constructed in OpenRAVE with context generated from 6 different human activities depicted by skeletals. The activities considered are walking, watching, interacting, reaching, sitting and working. \\
 The instructions involve task description for themes in common house-hold enviromnent like cleaning the room, arranging the guest room and serving coffee and also some simple instructions like move to the bed and then to the table. The dataset contains considerable high level ambiguous instructions like distribute, arrange etc. with variety in verbs.\\
-We filtered out 2 datapoints containing instructions which were very high level and uncertain even for  humans. Of the remaining 88 valid datapoints, 60 are used for training and 28 are used for testing purposes.  
+The dataset was divided into 60-30 ratio for training and testing purposes respectively.  
 
 % Please see supplementary for examples from our dataset.
 
@@ -34,7 +34,24 @@ We filtered out 2 datapoints containing instructions which were very high level 
   		\label{fig:c1}
 		\end{figure}
 	\subsubsection{TellMeDave with Coactive Feedback:} 
-		here goes description of tellmedave with coactive feedback
+	TellMeDave is system that grounds Natural Language instructions to sequence of robotic actions by capturing the context from the environment. The original version of Tellmedave was trained with stochastic gradient descent over 4 tasks performed in 5 different environments with 50 NL instructions on each. \\
+	As mentioned earlier, we aim to to learn user preferences via coactive learning which requires a sub optimal feedback from the user. Dataset chosen was same as that mentioned in the Dataset section with 60 train points and 30 test points containing high-level and low-level NL desciptions of the tasks. \\
+	The end-user gave feedback on each of the datapoints from the training set in the form of detailed descriptions. This feedback was hard to get due to difficulty in detecting the error in the pipeline i.e. whether the mistake lies in lexicon selection or object selection. \\
+	Evaluation Metrics. We consider two metrics, IED and END\cite{Misra2014tell}, which measure accuracy based on the action sequence and environment, respectively. The Instruction Edit Distance(IED)\ref{fig:IED} metric improved from 9.98\% to 30.21\% and Environment Edit Distance(END)\ref{fig:END} metric improved from 3.79 \% to 27.09\%.
+ 
+	\begin{figure}[h]
+		\includegraphics[width=8cm]{IED}
+		\centering
+		\caption{IED against different number of feedbacks }
+  		\label{fig:IED}
+		\end{figure}
+		
+	\begin{figure}[h]
+		\includegraphics[width=8cm]{END}
+		\centering
+		\caption{END against different number of feedbacks }
+  		\label{fig:END}
+		\end{figure}
 
 	\subsubsection{Joint system Coactive Feedback:}
 	In the given setting we cascade the modules corresponding to the language and trajectory planing in such a way that the robot executes a sequence of instructions to perform a task specified by the natural language instruction. The dataset consists of 90 language instructions across 16 environments of which 60 were used for training and 30 were used for evaluation.
@@ -52,7 +69,7 @@ We filtered out 2 datapoints containing instructions which were very high level 
 
 
 
-\subsection{Results} \todo{Dip: please take a detailed pass over this subsection}
+\subsection{Results} %\todo{Dip: please take a detailed pass over this subsection}
 We test our algorithm on two tasks, in the first task we evaluate the success of co-active feedback in tuning the robot system and in second task, we evaluate the results from different type of feedback.
 
 \noindent\textit{Task 1: Improvement Due to Co-active feedback}
@@ -84,12 +101,12 @@ Sys + MCF & BLAH \\
 \hline
 \textit{System} & \textit{Accuracy} \\
 \hline
-Sys + boolean & BLAH\\
-Sys + CF & BLAH \\
-Sys + Expert & BLAH \\
+Sys + boolean & --\\
+Sys + CF & -- \\
+Sys + Expert & -- \\
 \hline
 \end{tabular}
 \end{table}
 
 
-\todo{Dip: we should also experiment with individually tuning the two system AND experiment with different number of feedback until an asymptote is attained}
+%\todo{Dip: we should also experiment with individually tuning the two system AND experiment with different number of feedback until an asymptote is attained}

@@ -34,9 +34,8 @@ for intermediateObject in moveActionSeq:
 \begin{enumerate}
 \item path=generatePath(Env,intermediateObject,planitWeights)
 \item playInSimulator(Env,path)
-\item stop trajectory and capture the current point
-\item user moves the current point and records the updated point
-\item feedback.add((currentPoint,updatedPoint))
+\item stop trajectory at any point(P1) and record the updated point($\bar{W}_{P1}$)
+\item feedback.add((P1,$\bar{W}_{P1}$))
 \end{enumerate}
 % \vspace{6em}
 \textit{Step2(updating parameters)} \newline \newline

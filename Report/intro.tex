@@ -1,16 +1,16 @@
 % !TEX root = main.tex
 \section{INTRODUCTION}
-Building a reliable end-to-end robot system consisting of several modules is a challenging task.
+Building a reliable end-to-end robotic system consisting of several modules is a challenging task.
 A robot system, such as a robot that can make coffee [Jae], fold towel [], consists of several
 modules such as for object recognition, path planning, language understanding, manipulation. These modules
 are generally developed individually and there performance may not be optimal for the entire pipeline or they may fail due to incompatibility reasons which are hard to predict beforehand.
 
-Previous works such as \cite{abbeel2010autonomous} have used expert feedback to recover from these failures. However, obtaining expert feedback is expensive and not always possible. In this paper, we take a co-active learning[cite] approach for an end-to-end robot system consisting of several robot modules. We particularly focus our attention on particularly two important modules namely language and planning.
+Previous works such as \cite{abbeel2010autonomous} have used expert feedback to recover from these failures. However, obtaining expert feedback is expensive and not always possible. In this paper, we take a co-active learning[cite] approach for an end-to-end robot system consisting of several robot modules. We particularly focus our attention on particularly two important modules namely language grounding and planning.
 
 In a co-active learning setting, the user marginally improves the output of the system which is then used by the system for updating itself. This approach offers the advantage that user does not necessarily have to provide the optimal output. This allows the setting to work in cases where optimal output is not obvious or is expensive to obtain. 
 
 Previous works using this approach, have looked at robot system with single modules such as [planit, tellmedave etc.] 
-In this work, we expand this line of research to robot systems with multiple modules by showing how to propagate the co-active feedback given to the end observable output to the constituting modules.
+In this work, we expand this line of research to robot systems with multiple modules by showing how to propagate the co-active feedback given to the end observable output through the pipeline to the constituting modules.
 %In a joint end-to-end system many robotic tasks fail.  \\
 
 %Real-life systems fail, failure is expensive. Obtaining expert feedback is tough.
@@ -20,7 +20,7 @@ In this work, we expand this line of research to robot systems with multiple mod
 
 In this paper, our main contributions are two fold: we first provide a general mechanism
 for using co-active feedback for complex robot systems. Secondly, we provide an empirical validation of 
-our algorithm by improving a robot system for mapping natural language descriptions to navigation  trajectories. Our experiments also show that the final improved robot system, performs close to the robot system with each module trained individually using expert feedback.
+our algorithm by improving a robot system for mapping natural language descriptions to navigation  trajectories. Our experiments also show that the final improved robot system, performs close to the robot system with each module trained separately using expert feedback.
 %With our algorithm, we can get significant improvement in end to end system. \\
 
 %Our experiments show that we can converge to expert feedback system and we fixed
